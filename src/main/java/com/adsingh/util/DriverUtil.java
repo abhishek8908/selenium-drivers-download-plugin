@@ -8,11 +8,9 @@ import org.apache.commons.io.FileUtils;
 import org.apache.maven.plugin.logging.Log;
 import org.rauschig.jarchivelib.Archiver;
 import org.rauschig.jarchivelib.ArchiverFactory;
-import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -22,7 +20,7 @@ import java.util.Arrays;
 
 public class DriverUtil extends Logger {
 
-public static Log log= new Logger().getLog();
+    private static Log log = new Logger().getLog();
 
     public DriverUtil() {
     }
@@ -37,7 +35,7 @@ public static Log log= new Logger().getLog();
         cleanDir(targetDirectory);
     }
 
-    private static void unzipFile(String source, String destinationPath) throws IOException {
+    public static void unzipFile(String source, String destinationPath) throws IOException {
         if (source.contains(".zip")) {
             Archiver archiver = ArchiverFactory.createArchiver("zip");
             archiver.extract(new File(source), new File(destinationPath));
@@ -49,7 +47,7 @@ public static Log log= new Logger().getLog();
 
     }
 
-    private static void changeFileName(String fileName, String fileOut) throws IOException {
+    public static void changeFileName(String fileName, String fileOut) throws IOException {
         String os = System.getProperty("os");
         String ext = "";
         if (os.toLowerCase().contains("win")) {
@@ -62,7 +60,7 @@ public static Log log= new Logger().getLog();
 
     }
 
-    private static String getFileNameFromUrl(String url) {
+    public static String getFileNameFromUrl(String url) {
         String[] newUrl = url.split("/");
         log.info("***** File Name :"+newUrl[newUrl.length - 1]);
         return newUrl[newUrl.length - 1];
@@ -84,7 +82,7 @@ public static Log log= new Logger().getLog();
     }
 
 
-    private static void cleanDir(String dir) {
+    public static void cleanDir(String dir) {
         File folder = new File(dir);
         Arrays.stream(folder.listFiles((f, p) -> p.endsWith(".zip"))).forEach(File::delete);
         Arrays.stream(folder.listFiles((f, p) -> p.endsWith(".tar.gz"))).forEach(File::delete);
@@ -92,7 +90,7 @@ public static Log log= new Logger().getLog();
     }
 
 
-    private static String readProperty(String propertyName) throws ConfigurationException {
+    public static String readProperty(String propertyName) throws ConfigurationException {
         String resourcePath = "";
         try {
             resourcePath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
@@ -106,7 +104,7 @@ public static Log log= new Logger().getLog();
     }
 
 
-    private static String getSourceUrl(String browser) throws ConfigurationException {
+    public static String getSourceUrl(String browser) throws ConfigurationException {
         if (browser.toLowerCase().contains("chromedriver")) {
             return readProperty("chromedriver.download.url");
         } else if (browser.toLowerCase().contains("geckodriver")) {
@@ -118,67 +116,6 @@ public static Log log= new Logger().getLog();
         }
     }
 
-    @Test
-    public static void newDownload() throws IOException, ConfigurationException {
 
-        String fromFile = "https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-win32.zip";
-        String toFile = "D:/Driver/geckodriver-v0.20.1-win32.zip";
-        //connectionTimeout, readTimeout = 10 seconds
-        FileUtils.copyURLToFile(new URL(fromFile), new File(toFile), 10000, 10000);
-
-
-    }
-
-    @Test
-    public void testSystemProperty() throws ConfigurationException {
-        System.setProperty("ver", "2.39");
-        System.setProperty("os", "linux64");
-        System.setProperty("ext", "zip");
-        System.out.println(readProperty("chromedriver.download.url"));
-    }
-
-    @Test
-    public void donloadTest() throws IOException, URISyntaxException, ConfigurationException {
-        System.setProperty("ver", "2.39");
-        System.setProperty("os", "win32");
-        System.setProperty("ext", "zip");
-        download("chromedriver", "D:\\Driver", "2.39");
-    }
-
-    @Test
-    public void urlTest() throws IOException, URISyntaxException {
-
-        getFileNameFromUrl("https://chromedriver.storage.googleapis.com/2.39/chromedriver_win32.zip");
-
-    }
-
-    @Test
-    public void fileRename() throws IOException, URISyntaxException {
-
-        changeFileName("D:\\Driver\\chromedriver.exe", "D:\\Driver\\chromedriver-" + "2.38" + ".exe");
-
-    }
-
-    @Test
-    public void testCleanDir() throws IOException, URISyntaxException {
-
-        cleanDir("D:\\Driver");
-
-    }
-
-    @Test
-    public void testDriverExists() throws IOException, URISyntaxException {
-
-        System.out.println(checkDriverVersionExists("chromedriver", "2.38", "D:/Driver"));
-
-    }
-
-    @Test
-    public void testProperty() throws IOException, URISyntaxException, ConfigurationException {
-
-        System.out.println(readProperty("chrome.download.url"));
-        System.getProperty("os.name");
-
-    }
 
 }
