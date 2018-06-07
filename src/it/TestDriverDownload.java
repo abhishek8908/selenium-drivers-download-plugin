@@ -3,7 +3,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import static com.github.adsplugin.util.DriverUtil.download;
+import static com.github.abhishek8908.util.DriverUtil.download;
 
 public class TestDriverDownload {
 

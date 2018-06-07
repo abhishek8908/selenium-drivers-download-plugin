@@ -1,6 +1,6 @@
-package com.github.adsplugin.util;
+package com.github.abhishek8908.util;
 
-import com.github.adsplugin.driver.logger.Logger;
+import com.github.abhishek8908.driver.logger.Logger;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;

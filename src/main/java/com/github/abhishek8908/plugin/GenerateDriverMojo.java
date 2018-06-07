@@ -1,4 +1,4 @@
-package com.github.adsplugin.plugin;
+package com.github.abhishek8908.plugin;
 
 /*
  * Copyright 2001-2005 The Apache Software Foundation.
@@ -16,10 +16,10 @@ package com.github.adsplugin.plugin;
  * limitations under the License.
  */
 
-import com.github.adsplugin.driver.ChromeDriver;
-import com.github.adsplugin.driver.DriverSettings;
-import com.github.adsplugin.driver.GeckoDriver;
-import com.github.adsplugin.driver.enums.Drivers;
+import com.github.abhishek8908.driver.ChromeDriver;
+import com.github.abhishek8908.driver.DriverSettings;
+import com.github.abhishek8908.driver.GeckoDriver;
+import com.github.abhishek8908.driver.enums.Drivers;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.LifecyclePhase;

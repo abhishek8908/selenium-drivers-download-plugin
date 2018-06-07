@@ -1,7 +1,7 @@
-package com.github.adsplugin.driver;
+package com.github.abhishek8908.driver;
 
-import com.github.adsplugin.driver.logger.Logger;
-import com.github.adsplugin.util.DriverUtil;
+import com.github.abhishek8908.driver.logger.Logger;
+import com.github.abhishek8908.util.DriverUtil;
 import org.apache.commons.configuration.ConfigurationException;
 
 import java.io.File;

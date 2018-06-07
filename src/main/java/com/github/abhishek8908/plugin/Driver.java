@@ -1,4 +1,4 @@
-package com.github.adsplugin.plugin;
+package com.github.abhishek8908.plugin;
 
 public class Driver {
 
