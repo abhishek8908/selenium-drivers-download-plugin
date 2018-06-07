@@ -1,6 +1,6 @@
-package com.adsingh.util;
+package com.github.adsplugin.util;
 
-import com.adsingh.driver.logger.Logger;
+import com.github.adsplugin.driver.logger.Logger;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;

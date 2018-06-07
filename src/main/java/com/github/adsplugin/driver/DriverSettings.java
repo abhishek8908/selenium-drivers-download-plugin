@@ -1,6 +1,4 @@
-package com.adsingh.driver;
-
-import org.apache.commons.logging.Log;
+package com.github.adsplugin.driver;
 
 public class DriverSettings {
 

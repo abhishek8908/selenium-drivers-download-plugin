@@ -1,4 +1,4 @@
-package com.adsingh.plugin;
+package com.github.adsplugin.plugin;
 
 /*
  * Copyright 2001-2005 The Apache Software Foundation.
@@ -16,15 +16,12 @@ package com.adsingh.plugin;
  * limitations under the License.
  */
 
-import com.adsingh.driver.ChromeDriver;
-import com.adsingh.driver.DriverSettings;
-import com.adsingh.driver.GeckoDriver;
-import com.adsingh.driver.enums.Drivers;
-import com.adsingh.driver.logger.Logger;
+import com.github.adsplugin.driver.ChromeDriver;
+import com.github.adsplugin.driver.DriverSettings;
+import com.github.adsplugin.driver.GeckoDriver;
+import com.github.adsplugin.driver.enums.Drivers;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.maven.plugin.AbstractMojo;
-import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
@@ -55,7 +52,7 @@ public class GenerateDriverMojo extends AbstractMojo {
 //    @Parameter
 //    private Logger logger;
 
-    public void execute() throws MojoExecutionException {
+    public void execute() {
         System.out.println("Driver size =" + drivers.size());
      //   logger.setLog(getLog());
 

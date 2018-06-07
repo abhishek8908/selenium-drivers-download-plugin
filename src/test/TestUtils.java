@@ -1,4 +1,4 @@
-import com.adsingh.util.DriverUtil;
+import com.github.adsplugin.util.DriverUtil;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.io.FileUtils;
 import org.testng.annotations.Test;
@@ -6,8 +6,6 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-
-import static com.adsingh.util.DriverUtil.*;
 
 public class TestUtils {
 
@@ -39,7 +37,7 @@ public class TestUtils {
     }
 
     @Test
-    public void fileRename() throws IOException {
+    public void fileRename() {
 
         changeFileName("D:\\Driver\\chromedriver.exe", "D:\\Driver\\chromedriver-" + "2.38" + ".exe");
 
@@ -53,14 +51,14 @@ public class TestUtils {
     }
 
     @Test
-    public void testDriverExists() throws IOException {
+    public void testDriverExists() {
 
         System.out.println(checkDriverVersionExists("chromedriver", "2.38", "D:/Driver"));
 
     }
 
     @Test
-    public void testProperty() throws ConfigurationException {
+    public void testProperty() {
 
         System.out.println(readProperty("chrome.download.url"));
         System.getProperty("os.name");

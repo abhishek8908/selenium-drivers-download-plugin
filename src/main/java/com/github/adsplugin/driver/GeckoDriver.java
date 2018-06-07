@@ -1,22 +1,21 @@
-package com.adsingh.driver;
+package com.github.adsplugin.driver;
 
-import com.adsingh.driver.logger.Logger;
-import com.adsingh.util.DriverUtil;
+import com.github.adsplugin.driver.logger.Logger;
+import com.github.adsplugin.util.DriverUtil;
 import org.apache.commons.configuration.ConfigurationException;
-import org.apache.commons.logging.Log;
 
 import java.io.File;
 import java.io.IOException;
 
-public class ChromeDriver extends Logger implements IDriver {
+public class GeckoDriver extends Logger implements IDriver {
 
-    private final String EXT = "zip";
-    private final String DRIVER_NAME = "chromedriver";
+    private final String DRIVER_NAME = "geckodriver";
     private String version;
     private String os;
     private String driverDir;
+    private String ext;
 
-    public ChromeDriver(DriverSettings settings) {
+    public GeckoDriver(DriverSettings settings) {
         this.version = settings.getVersion();
         System.setProperty("ver", this.version);
         getLog().info("****System property :"+"version="+System.getProperty("ver"));
@@ -24,21 +23,31 @@ public class ChromeDriver extends Logger implements IDriver {
         System.setProperty("os", this.os);
         getLog().info("****System property :"+"os="+System.getProperty("os"));
         this.driverDir = settings.getDriverDir();
-        System.setProperty("ext", this.EXT);
+        System.setProperty("ext", setExt());
         getLog().info("****System property :"+"ext="+System.getProperty("ext"));
     }
 
     private boolean isDriverAvailable() throws IOException {
         return DriverUtil.checkDriverVersionExists(DRIVER_NAME, version, driverDir);
-
     }
 
-    public ChromeDriver getDriver() throws IOException, ConfigurationException {
+
+    private String setExt() {
+        if (os.toLowerCase().contains("win")) {
+            this.ext = "zip";
+        } else if (os.toLowerCase().contains("linux")) {
+            this.ext = "tar.gz";
+        } else if (os.toLowerCase().contains("mac")) {
+            this.ext = "tar.gz";
+        }
+        return ext;
+    }
+
+    public GeckoDriver getDriver() throws IOException, ConfigurationException {
 
         if (!isDriverAvailable()) {
             DriverUtil.download(DRIVER_NAME, driverDir, version);
         } else {
-            getLog().info("***********"+DRIVER_NAME+" already exists at location "+driverDir);
             setDriverInSystemProperty();
         }
         return this;
@@ -47,9 +56,8 @@ public class ChromeDriver extends Logger implements IDriver {
 
     @Override
     public void setDriverInSystemProperty() {
-        System.setProperty("webdriver.chrome.driver", driverDir + File.separator + DRIVER_NAME + "-" + version + "-" + os);
-        getLog().info("*****Setting webdriver.chrome.driver : "+System.getProperty("webdriver.chrome.driver"));
+        System.setProperty("webdriver.gecko.driver", driverDir + File.separator + DRIVER_NAME + "-" + version + "-" + os);
+        getLog().info("*****Setting webdriver.gecko.driver : "+System.getProperty("webdriver.gecko.driver"));
     }
-
 
 }

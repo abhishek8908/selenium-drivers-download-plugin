@@ -1,4 +1,4 @@
-package com.adsingh.driver;
+package com.github.adsplugin.driver;
 
 
 public class SafariDriver implements IDriver {

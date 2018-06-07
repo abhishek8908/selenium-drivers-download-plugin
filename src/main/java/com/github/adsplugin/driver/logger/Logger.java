@@ -1,4 +1,4 @@
-package com.adsingh.driver.logger;
+package com.github.adsplugin.driver.logger;
 
 import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.plugin.logging.SystemStreamLog;
