@@ -2,7 +2,6 @@
 A maven plugin which generates drivers (chromedriver and geckodriver) at run time and sets the system property for the browser 
 
 # Maven dependency
-
 <dependency>
   <groupId>com.github.abhishek8908</groupId>
   <artifactId>selenium-drivers-download-plugin</artifactId>
