@@ -1,16 +1,25 @@
 # selenium-drivers-download-plugin
 A maven plugin which generates drivers (chromedriver and geckodriver) at run time and sets the system property for the browser 
 
+# Maven dependency
+
+<dependency>
+  <groupId>com.github.abhishek8908</groupId>
+  <artifactId>selenium-drivers-download-plugin</artifactId>
+  <version>1.1</version>
+</dependency>
+
+
 # Quickstart
 Add the following to your POM file.
 
             <plugin>
-                <groupId>com.adsingh.plugin</groupId>
+                <groupId>com.github.abhishek8908</groupId>
                 <artifactId>selenium-drivers-download-plugin</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>1.1</version>
                 <configuration>
                 <!-- Path to save selenium drivers -->
-                    <driverPath>D:/Driver</driverPath>
+                    <driverPath>${project.basedir}/drivers</driverPath>
                     <drivers>
                         <driver>
                          <!-- Driver Name -->
