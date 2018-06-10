@@ -28,6 +28,7 @@ public class DriverUtil extends Logger {
     public static void download(String driverName, String targetDirectory, String version) throws IOException, ConfigurationException {
         String sourceURL = getSourceUrl(driverName);
         String fileName = getFileNameFromUrl(sourceURL);
+        //     checkDriverDirExists(targetDirectory);
         String toFile = targetDirectory + File.separator + fileName;
         FileUtils.copyURLToFile(new URL(sourceURL), new File(toFile), 10000, 10000);
         unzipFile(targetDirectory + File.separator + fileName, targetDirectory);
@@ -116,6 +117,25 @@ public class DriverUtil extends Logger {
         }
     }
 
+    public static String getExtensionOfDriver(String os) {
+
+        if (os.contains("win")) {
+            return ".exe";
+        } else {
+            return "";
+        }
+
+    }
+
+    public static void checkDriverDirExists(String dirName) throws IOException {
+
+        File directory = new File(dirName);
+        if (!directory.exists()) {
+            log.info("Driver directory does not exists !! Creating...");
+            FileUtils.forceMkdir(directory);
+        }
+
+    }
 
 
 }

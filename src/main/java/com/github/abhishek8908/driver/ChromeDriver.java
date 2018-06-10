@@ -4,7 +4,6 @@ import com.github.abhishek8908.driver.logger.Logger;
 import com.github.abhishek8908.util.DriverUtil;
 import org.apache.commons.configuration.ConfigurationException;
 
-import java.io.File;
 import java.io.IOException;
 
 public class ChromeDriver extends Logger implements IDriver {
@@ -28,6 +27,7 @@ public class ChromeDriver extends Logger implements IDriver {
     }
 
     private boolean isDriverAvailable() throws IOException {
+        DriverUtil.checkDriverDirExists(driverDir);
         return DriverUtil.checkDriverVersionExists(DRIVER_NAME, version, driverDir);
 
     }
@@ -38,17 +38,17 @@ public class ChromeDriver extends Logger implements IDriver {
             DriverUtil.download(DRIVER_NAME, driverDir, version);
         } else {
             getLog().info("***********"+DRIVER_NAME+" already exists at location "+driverDir);
-            setDriverInSystemProperty();
+            //   setDriverInSystemProperty();
         }
         return this;
 
     }
 
-    @Override
-    public void setDriverInSystemProperty() {
-        System.setProperty("webdriver.chrome.driver", driverDir + File.separator + DRIVER_NAME + "-" + version + "-" + os);
-        getLog().info("*****Setting webdriver.chrome.driver : "+System.getProperty("webdriver.chrome.driver"));
-    }
+//    @Override
+//    public void setDriverInSystemProperty() {
+//        System.setProperty("webdriver.chrome.driver", driverDir + File.separator + DRIVER_NAME + "-" + version + "-" + os+DriverUtil.getExtensionOfDriver(os));
+//        getLog().info("*****Setting webdriver.chrome.driver : "+System.getProperty("webdriver.chrome.driver"));
+//    }
 
 
 }

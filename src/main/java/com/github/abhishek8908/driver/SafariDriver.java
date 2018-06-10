@@ -25,10 +25,10 @@ public class SafariDriver implements IDriver {
         return null;
     }
 
-    @Override
-    public void setDriverInSystemProperty() {
-
-    }
+//    @Override
+//    public void setDriverInSystemProperty() {
+//
+//    }
 
     public void setDriverPath() {
 

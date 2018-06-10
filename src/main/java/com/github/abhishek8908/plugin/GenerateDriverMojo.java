@@ -65,7 +65,8 @@ public class GenerateDriverMojo extends AbstractMojo {
             settings.setDriverDir(driverPath);
             if (driver.getName().equalsIgnoreCase(Drivers.CHROMEDRIVER.toString())) {
                 try {
-                    new ChromeDriver(settings).getDriver().setDriverInSystemProperty();
+                    //   new ChromeDriver(settings).getDriver().setDriverInSystemProperty();
+                    new ChromeDriver(settings).getDriver();
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (ConfigurationException ce) {
@@ -74,7 +75,8 @@ public class GenerateDriverMojo extends AbstractMojo {
             }
             if (driver.getName().equalsIgnoreCase(Drivers.GECKODRIVER.toString())) {
                 try {
-                    new GeckoDriver(settings).getDriver().setDriverInSystemProperty();
+                    //     new GeckoDriver(settings).getDriver().setDriverInSystemProperty();
+                    new GeckoDriver(settings).getDriver();
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (ConfigurationException ce) {

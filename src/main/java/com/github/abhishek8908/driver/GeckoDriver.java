@@ -4,7 +4,6 @@ import com.github.abhishek8908.driver.logger.Logger;
 import com.github.abhishek8908.util.DriverUtil;
 import org.apache.commons.configuration.ConfigurationException;
 
-import java.io.File;
 import java.io.IOException;
 
 public class GeckoDriver extends Logger implements IDriver {
@@ -35,9 +34,7 @@ public class GeckoDriver extends Logger implements IDriver {
     private String setExt() {
         if (os.toLowerCase().contains("win")) {
             this.ext = "zip";
-        } else if (os.toLowerCase().contains("linux")) {
-            this.ext = "tar.gz";
-        } else if (os.toLowerCase().contains("mac")) {
+        } else {
             this.ext = "tar.gz";
         }
         return ext;
@@ -48,16 +45,17 @@ public class GeckoDriver extends Logger implements IDriver {
         if (!isDriverAvailable()) {
             DriverUtil.download(DRIVER_NAME, driverDir, version);
         } else {
-            setDriverInSystemProperty();
+            getLog().info("***********" + DRIVER_NAME + " already exists at location " + driverDir);
+            //   setDriverInSystemProperty();
         }
         return this;
 
     }
 
-    @Override
-    public void setDriverInSystemProperty() {
-        System.setProperty("webdriver.gecko.driver", driverDir + File.separator + DRIVER_NAME + "-" + version + "-" + os);
-        getLog().info("*****Setting webdriver.gecko.driver : "+System.getProperty("webdriver.gecko.driver"));
-    }
+//    @Override
+//    public void setDriverInSystemProperty() {
+//        System.setProperty("webdriver.gecko.driver", driverDir + File.separator + DRIVER_NAME + "-" + version + "-" + os+DriverUtil.getExtensionOfDriver(os));
+//        getLog().info("*****Setting webdriver.gecko.driver : "+System.getProperty("webdriver.gecko.driver"));
+//    }
 
 }
