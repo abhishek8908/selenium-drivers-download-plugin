@@ -66,14 +66,14 @@ Add the following plugin to your POM file.
 
 # Usage
 
-Add system property with Surefire Plugin 
+Add system property with Surefire Plugin :
 
-       <properties>
-            <name>chromedriver</name>
-            <version>2.40</version>
-            <os>win32</os>
-       </properties>
-
+    <properties>
+        <name>chromedriver</name>
+        <version>2.40</version>
+        <os>win32</os>
+    </properties>
+    
     <build>
         <plugins>
             <plugin>
