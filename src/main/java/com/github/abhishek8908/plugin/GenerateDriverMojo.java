@@ -53,7 +53,7 @@ public class GenerateDriverMojo extends AbstractMojo {
 //    private Logger logger;
 
     public void execute() {
-        System.out.println("Driver size =" + drivers.size());
+        getLog().info("***Driver size =" + drivers.size());
      //   logger.setLog(getLog());
 
         DriverSettings settings = new DriverSettings();
