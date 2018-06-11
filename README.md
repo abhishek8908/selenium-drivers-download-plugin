@@ -62,3 +62,35 @@ Add the following plugin to your POM file.
                     </execution>
                 </executions>
             </plugin>
+
+
+# Usage
+
+Add system property with Surefire Plugin 
+
+       <properties>
+            <name>chromedriver</name>
+            <version>2.40</version>
+            <os>win32</os>
+       </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.21.0</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <systemProperties>
+                        <property>
+                            <name>webdriver.chrome.driver</name>
+                            <value>${project.basedir}/drivers/${name}-${version}-${os}.exe</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
