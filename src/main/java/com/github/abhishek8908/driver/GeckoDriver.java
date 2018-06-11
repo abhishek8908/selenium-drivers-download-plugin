@@ -27,6 +27,7 @@ public class GeckoDriver extends Logger implements IDriver {
     }
 
     private boolean isDriverAvailable() throws IOException {
+        DriverUtil.checkDriverDirExists(driverDir);
         return DriverUtil.checkDriverVersionExists(DRIVER_NAME, version, driverDir);
     }
 
