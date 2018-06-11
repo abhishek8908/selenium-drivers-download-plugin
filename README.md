@@ -7,7 +7,7 @@ A maven plugin which generates drivers (chromedriver and geckodriver) at run tim
     <dependency>
         <groupId>com.github.abhishek8908</groupId>
         <artifactId>selenium-drivers-download-plugin</artifactId>
-        <version>1.0</version>
+        <version>1.1</version>
     </dependency>
 </dependencies>
 ~~~
