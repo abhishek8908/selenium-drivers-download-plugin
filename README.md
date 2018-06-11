@@ -7,7 +7,7 @@ A maven plugin which generates drivers (chromedriver and geckodriver) at run tim
     <dependency>
         <groupId>com.github.abhishek8908</groupId>
         <artifactId>selenium-drivers-download-plugin</artifactId>
-        <version>1.1</version>
+        <version>1.2</version>
     </dependency>
 </dependencies>
 ~~~
@@ -19,7 +19,7 @@ Add the following plugin to your POM file.
             <plugin>
                 <groupId>com.github.abhishek8908</groupId>
                 <artifactId>selenium-drivers-download-plugin</artifactId>
-                <version>1.1</version>
+                <version>1.2</version>
                 <configuration>
                 <!-- Path to save selenium drivers -->
                     <driverPath>${project.basedir}/drivers</driverPath>
@@ -38,7 +38,7 @@ Add the following plugin to your POM file.
                             <os>linux64</os>
                         </driver>
                         <driver>
-                            <name>geckodriver</name>
+                            <name>geckodriver</name
                             <version>0.20.1</version>
                             <os>linux64</os>
                         </driver>
