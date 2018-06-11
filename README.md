@@ -14,7 +14,7 @@ A maven plugin which generates drivers (chromedriver and geckodriver) at run tim
 
 
 # Quickstart
-Add the following to your POM file.
+Add the following plugin to your POM file.
 
             <plugin>
                 <groupId>com.github.abhishek8908</groupId>
