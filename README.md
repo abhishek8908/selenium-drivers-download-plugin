@@ -69,7 +69,7 @@ Add the following plugin to your POM file.
 Add system property with Surefire Plugin :
 
     <properties>
-        <name>chromedriver</name>
+        <browser>chromedriver</browser>
         <version>2.40</version>
         <os>win32</os>
     </properties>
@@ -87,10 +87,34 @@ Add system property with Surefire Plugin :
                     <systemProperties>
                         <property>
                             <name>webdriver.chrome.driver</name>
-                            <value>${project.basedir}/drivers/${name}-${version}-${os}.exe</value>
+                            <value>${project.basedir}/drivers/${browser}-${version}-${os}.exe</value>
                         </property>
                     </systemProperties>
                 </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>com.github.abhishek8908</groupId>
+                <artifactId>selenium-drivers-download-plugin</artifactId>
+                <version>1.2</version>
+                <configuration>
+                <!-- Path to save selenium drivers -->
+                    <driverPath>${project.basedir}/drivers</driverPath>
+                    <drivers>
+                        <driver>
+                            <name>${browser}</name>
+                            <version>${version}</version>
+                            <os>${os}</os>
+                        </driver>
+                    </drivers>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generateDrivers</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
